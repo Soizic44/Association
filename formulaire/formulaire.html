@@ -31,10 +31,9 @@
                 </div>
             </div>
 
-            <div id="div_st">
+            <div id="div_societe">
                 <label for="societe">Societe :</label><input type="text" id="societe" name="societe" placeholder="Nom de la société" required>
             </div>
-            
         </fieldset>
 
         <fieldset id="message">
@@ -42,7 +41,7 @@
 
             <div>
                 <label for="objet">Objet :</label>
-                <select name="objet" id="objet">
+                <select type="text" name="objet" id="objet" required>
                     <optgroup label="physique">
                         <option value="FA">Devenir FA</option>
                         <option value="bénévolat">Devenir Bénévole</option>
@@ -61,7 +60,7 @@
             <div>
                 <label for="email">Email :</label><input type="email" id="email" name="email" placeholder="email@mail.com" required>
             </div>
-            <textarea name="message" id="messageArea" cols="50" rows="10" placeholder="Message..." required></textarea>
+            <textarea name="message" id="message" cols="50" rows="10" placeholder="Message..." required></textarea>
         </fieldset>
         <button type="submit">Envoyer</button>
 
