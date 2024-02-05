@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de contact</title>
+    <link rel="stylesheet" href="styleform.css"/>
+</head>
+<body>
+    <h1>Formulaire de contact</h1>
+    
+    <form id=""formulaire>
+        <fieldset id="infos">
+            <legend><h2>Vos informations</h2></legend>
+            <div id="div_name">
+                <label for="name">Nom :</label><input type="text" name="nom" id="name" placeholder="Dubois" required>
+            </div>
+
+            <div id="div_firstname">
+                <label for="firstname">Prénom :</label><input type="text" name="Prénom" id="firstname" placeholder="Martin" required>
+            </div>
+
+            <div id="choiceStatut">
+                <label for="statut">Statut :</label>
+                <div>
+                    <input type="radio" name="statut" id="particulier" required checked><label for="particulier">Particulier</label>
+                </div>
+                <div>
+                    <input type="radio" name="statut" id="professionnel" required><label for="professionnel">Professionnel</label>
+                </div>
+            </div>
+
+            <div id="div_st">
+                <label for="societe">Societe :</label><input type="text" id="societe" name="societe" placeholder="Nom de la société" required>
+            </div>
+            
+        </fieldset>
+
+        <fieldset id="message">
+            <legend><h2>Message</h2></legend>
+
+            <div>
+                <label for="objet">Objet :</label>
+                <select name="objet" id="objet">
+                    <optgroup label="physique">
+                        <option value="FA">Devenir FA</option>
+                        <option value="bénévolat">Devenir Bénévole</option>
+                    </optgroup>
+                    <optgroup label="financier">
+                        <option value="adhérer">Devenir adhérent(e)</option>
+                        <option value="don">Faire un don</option>
+                    </optgroup>
+                    <optgroup label="autre">
+                        <option value="urgence">Demande d'aide</option>
+                        <option value="autre">Autre</option>
+                    </optgroup>
+                </select>
+            </div>
+
+            <div>
+                <label for="email">Email :</label><input type="email" id="email" name="email" placeholder="email@mail.com" required>
+            </div>
+            <textarea name="message" id="messageArea" cols="50" rows="10" placeholder="Message..." required></textarea>
+        </fieldset>
+        <button type="submit">Envoyer</button>
+
+    </form>
+</body>
+</html>
