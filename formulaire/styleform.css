@@ -86,17 +86,3 @@ button:active {
     background-color: #505050;
 }
 
-/*classes d'animations pour JavaScript*/
-.masque {
-    opacity: 0%;
-    margin-bottom: -4%;
-}
-.app {
-    opacity: 100%;
-    transition-duration: 0.5s;
-    margin-bottom: 0%;
-}
-.disp {
-    opacity: 0%;
-    transition-duration: 0.5s;
-    margin-bottom: -4%;
