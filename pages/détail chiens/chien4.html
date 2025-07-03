@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le refuge de l'espoir</title>
+    <meta name="description" content="decouvrez notre association : Le refuge de l'espoir">
+    <link rel="stylesheet" href="/style.css"/>
+    <link rel="icon" href="/assets/Logo refuge.png" sizes="114x114" type="image/png">
+</head>
+
+<body>
+    <!--START : header-->
+    <header class="header">
+
+        <!--START : navbar-->
+        <nav class="navbar">
+            <img class="logo" src="/assets/Logo refuge.png" alt="Logo de l'association Le refuge de l'espoir"/>
+            <a href="tel:0668369763" target="_blank" class="haeder__button">&#9743;</a>
+            
+            <!--Création Burger-->
+            <label for="btn" class="icon">
+                <svg viewBox="0 0 100 80" width="40" height="40">
+                    <rect width="100" height="15"></rect>
+                    <rect y="35" width="100" height="15"></rect>
+                    <rect y="70" width="100" height="15"></rect>
+                </svg>
+            </label>
+            <input type="checkbox" id="btn">
+            
+            <!--Navigation principale / menu-->
+            <ul class="menu">
+                <li class="nav-item"><a href="/index.html">Accueil</a></li>
+                <li class="nav-item">
+                    <label for="btn2" class="deroulant">Adoption </label>
+                    <input type="checkbox" id="btn2">
+                    
+                    <!--1er sous-menu-->
+                    <ul class="dropdown">
+                        <li class="drop-item"><a href="/pages/chiens.html">Nos chiens</a></li>
+                        <li class="drop-item"></li><a href="/pages/chats.html">Nos chats</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <label for="btn3" class="deroulant">Nous aider </label>
+                    <input type="checkbox" id="btn3">
+                    
+                    <!--2eme sous-menu-->
+                    <ul class="dropdown">
+                        <li class="drop-item"><a href="/pages/formulaire.html">Devenir FA / Adhérent(e)</a></li>
+                        <li class="drop-item"></li><a href="/pages/dons.html">Faire un don</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="/pages/evenements.html">Evènements</a></li>
+                <li class="nav-item"><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!--END : Navbar-->
+
+    </header>
+    <!--END : header-->
+
+    <!--START : main-->
+    <main class="main">
+        <!--START : hero-->
+        <section class="hero">
+            <h1>Le refuge de l'espoir</h1>
+            <h2 class="h2__hero">Soins et protection animale</h2>
+            <div class="image__hero">
+                <p>Notre Association est reconnue d'intérêt général.<br/> 
+                Elle rassemble un groupe de personnes qui informent et mettent en place des actions dans le but de protéger les animaux et d'assurer leur bien-être.</p>
+            </div>
+        </section>
+        <!--END : hero-->
+
+        <!--START : Chien-->
+        <section class="container">
+            <h2 class="titre_h2">Athéna</h2>
+        
+            <!--START : Athéna-->
+            <div class="section">
+                <div class="animal">
+                    <img class="image_animal" src="/assets/chiens/chien4.jpg" alt="Athéna"/>
+                </div>
+                <div class="animal">
+                    <h2 class="h2_animal">Athéna</h2>
+                    <p>Race : Golden retriever<br/>
+                    Sexe : Femelle</p>
+                    <p>Née le 15/01/2019</p>
+                    <div class="textForm">
+                        <h3 class="h3_animal">Déscription</h3>
+                        <p class="pad">Arrivée au refuge, Décès de son maître.</p>
+                        <p class="pad">Elle est très proche de son humain, fidèle et affectueuse.</p>
+                        <p class="pad">La vie en refuge pour Athéna est très compliqué car avait l'habitude de troujours avoir son humain avec elle.</p>
+                        <p class="pad">Athéna à besoin de présence humaine, pour cela son futur adoptant devra être présent pour elle.</p>
+                    </div>    
+                </div>
+            </div>
+            <a class="lien bgColor2" href="/pages/chiens.html">Retour chiens</a>
+            
+            <!--END : Athéna-->
+        </section>
+        <!--END : Chien-->
+
+    </main>
+    <!--END : main-->
+    
+    <!--START : footer-->
+    <footer id="copyright">
+            <p>Copyright © 2024 Le refuge de l'espoir <br>/ Tous droits réservés</p>
+    </footer>
+    <!--END : footer-->
+
+</body>
+</html>

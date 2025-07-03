@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le refuge de l'espoir</title>
+    <meta name="description" content="decouvrez notre association : Le refuge de l'espoir">
+    <link rel="stylesheet" href="/style.css"/>
+    <link rel="icon" href="/assets/Logo refuge.png" sizes="114x114" type="image/png">
+</head>
+
+<body>
+    <!--START : header-->
+    <header class="header">
+
+        <!--START : navbar-->
+        <nav class="navbar">
+            <img class="logo" src="/assets/Logo refuge.png" alt="Logo de l'association Le refuge de l'espoir"/>
+            <a href="tel:0668369763" target="_blank" class="haeder__button">&#9743;</a>
+            
+            <!--Création Burger-->
+            <label for="btn" class="icon">
+                <svg viewBox="0 0 100 80" width="40" height="40">
+                    <rect width="100" height="15"></rect>
+                    <rect y="35" width="100" height="15"></rect>
+                    <rect y="70" width="100" height="15"></rect>
+                </svg>
+            </label>
+            <input type="checkbox" id="btn">
+            
+            <!--Navigation principale / menu-->
+            <ul class="menu">
+                <li class="nav-item"><a href="/index.html">Accueil</a></li>
+                <li class="nav-item">
+                    <label for="btn2" class="deroulant">Adoption </label>
+                    <input type="checkbox" id="btn2">
+                    
+                    <!--1er sous-menu-->
+                    <ul class="dropdown">
+                        <li class="drop-item"><a href="/pages/chiens.html">Nos chiens</a></li>
+                        <li class="drop-item"></li><a href="/pages/chats.html">Nos chats</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <label for="btn3" class="deroulant">Nous aider </label>
+                    <input type="checkbox" id="btn3">
+                    
+                    <!--2eme sous-menu-->
+                    <ul class="dropdown">
+                        <li class="drop-item"><a href="/pages/formulaire.html">Devenir FA / Adhérent(e)</a></li>
+                        <li class="drop-item"></li><a href="/pages/dons.html">Faire un don</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="/pages/evenements.html">Evènements</a></li>
+                <li class="nav-item"><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!--END : Navbar-->
+
+    </header>
+    <!--END : header-->
+
+    <!--START : main-->
+    <main class="main">
+        <!--START : hero-->
+        <section class="hero">
+            <h1>Le refuge de l'espoir</h1>
+            <h2 class="h2__hero">Soins et protection animale</h2>
+            <div class="image__hero">
+                <p>Notre Association est reconnue d'intérêt général.<br/> 
+                Elle rassemble un groupe de personnes qui informent et mettent en place des actions dans le but de protéger les animaux et d'assurer leur bien-être.</p>
+            </div>
+        </section>
+        <!--END : hero-->
+
+        <!--START : Chat-->
+        <section class="container">
+            <h2 class="titre_h2">Tigrou</h2>
+        
+            <!--START : Tigrou-->
+            <div class="section">
+                <div class="animal">
+                    <img class="image_animal" src="/assets/chats/chat4.jpg" alt="Tigrou"/>
+                </div>
+                <div class="animal">
+                    <h2 class="h2_animal">Tigrou</h2>
+                    <p>Race : Chat européen<br/>
+                    Sexe : Mâle</p>
+                    <p>Né le 12/04/2025</p>
+                    <div class="textForm">
+                        <h3 class="h3_animal">Déscription</h3>
+                        <p class="pad">Tigrou, c’est le parfait mélange de tendresse et de malice. Un chat très gentil, toujours partant pour une séance de câlins ou une petite partie de jeu. Curieux, doux et proche de l’humain, il a ce petit truc qui fait sourire dès qu’on croise son regard.</p>
+                        <p class="pad">Avec Tigrou, pas besoin de grands discours : sa compagnie suffit à illuminer les journées. Il aime les interactions, s’adapte bien à son environnement et n’attend qu’une chose : trouver un foyer où il pourra enfin poser ses pattounes pour de bon. </p>
+                    </div>    
+                </div>
+            </div>
+            <a class="lien bgColor2" href="/pages/chats.html">Retour chats</a>
+            
+            <!--END : Tigrou-->
+        </section>
+        <!--END : Chat-->
+
+    </main>
+    <!--END : main-->
+    
+    <!--START : footer-->
+    <footer id="copyright">
+            <p>Copyright © 2024 Le refuge de l'espoir <br>/ Tous droits réservés</p>
+    </footer>
+    <!--END : footer-->
+
+</body>
+</html>
