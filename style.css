@@ -12,14 +12,9 @@ a {
     list-style: none;
 }
 
-button, input {
-    border-width: 0;
-    appearance: none;
-}
-
 /*Apparence générale*/
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif
 }
 
@@ -30,12 +25,13 @@ h1 {
 
 h3 {
     text-decoration: underline;
+    font-size: 20px;
 }
 
 /*apparence des liens boutton*/
-.lien{
+.lien {
     display: inline-block;
-    background-color: rgb(7, 0, 0);
+    background-color: cornflowerblue;
     border-radius: 10px;
     color: white;
     text-align: center;
@@ -45,33 +41,59 @@ h3 {
     cursor: pointer;
     margin: 15px 0;
 }
-
 .lien:hover {
     background-color: #fdb5b5;
 }
-
 .lien:active {
     background-color: #505050;
 }
 
+.button {
+    font-weight: bold;
+    font-size: 20px;
+}
+.button:hover {
+    color: #fdb5b5;
+}
+.button:active {
+    color: #505050;
+}
+
+/*apparence des liens boutton*/
+button {
+    border-radius: 10px;
+    background-color: cornflowerblue;
+    color: white;
+    padding: 0.7em 1em;
+    font-size: 1em;
+    border: none;
+}
+button:hover {
+    background-color: #014e79;
+    transition-duration: 0.5s;
+}
+button:active {
+    background-color: #505050;
+}
+
 /*HEADER*/
-.header{
+.header {
     position: sticky;
     top: 0;
     background-color: black;
 }
 
-.logo{
+.logo {
     width: 75px;
 }
 
-.haeder__button{
+.haeder__button {
     color: white;
     font-size: 40px;
 }
 
-.navbar{
-    padding: 10px;
+.navbar {
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,29 +101,29 @@ h3 {
 }
 
 /*BURGER-MENU*/
-.icon{
+.icon {
     fill: white;
     cursor: pointer;
 }
 
 /*Cacher "case à cocher" du checkbox + cacher le menu et sous-menu*/
-.navbar input, .menu, .dropdown{
+.navbar input, .menu, .dropdown {
     display: none;
 }
 
 /*Afficher le menu (qui commence par "btn) en cliquant sur le Burger*/
-[id^=btn]:checked + ul{
+[id^=btn]:checked + ul {
     display: block;
 }
 
 /*Style des sous-menu*/
-.dropdown{
+.dropdown {
     background-color: rgb(59, 59, 59);
     padding-left: 10%;
 }
 
 /*Mise en place du menu déplié*/
-.menu{
+.menu {
     background-color: black;
     position: absolute;
     top: 85px;
@@ -110,7 +132,7 @@ h3 {
 }
 
 /*style du menu*/
-.nav-item a, .drop-item a, .deroulant{
+.nav-item a, .drop-item a, .deroulant {
     color: white;
     line-height: 50px;
     font-size: 1.2rem;
@@ -123,7 +145,7 @@ h3 {
 }
 
 /*mise en évidence de la selection*/
-.haeder__button:hover, .menu a:hover, .deroulant:hover{
+.haeder__button:hover, .menu a:hover, .deroulant:hover {
     color: gray;
     font-weight: bolder;
 }
@@ -133,22 +155,40 @@ main {
     text-align: center;
 }
 
-span{
+span {
     color: rgb(198, 3, 3);
     font-weight: bolder;
 }
 
-ul.main{
+ul.main {
     margin-top: 10px;
 }
 
-li.main{
+li.main {
     list-style: inside;
     margin-top: 5px;
 }
+.important {
+    text-align: center;
+    font-weight: bold;
+}
+.important p {
+    font-size: 20px;
+}
+
+/*Ajout espacement*/
+.pad {
+    padding: 10px;
+}
+.padding {
+    padding: 15px;
+}
+.padd{
+    padding-bottom: 7px;
+}
 
 /*Section HERO*/
-.hero{
+.hero {
     margin-bottom: -40px;
     padding-top: 2%;
     background-color: rgb(250, 250, 250);
@@ -156,12 +196,6 @@ li.main{
 
 .h2__hero {
     padding-bottom: 2%;
-}
-
-/*Section HERO1*/
-.hero1{
-    padding-top: 2%;
-    background-color: #A8DBF8;
 }
 
 /*Banner générale*/
@@ -175,11 +209,13 @@ li.main{
 
 /*Banner pub*/
 .image__hero1 {
+    padding-top: 2%;
+    background-color: #A8DBF8;
     background-image: url(assets/ensemble-chat-chien-en-cercle.jpg);
     background-position: center;
-    background-color: rgb(132, 231, 247);
     background-size: cover;
     height: 450px;
+    padding: 20px;
 }
 
 /*format images autre que bannière*/
@@ -187,6 +223,25 @@ li.main{
     width: 100%;
     max-width: 550px;
     margin-top: 5%;
+}
+
+/*Style sections pages*/
+.container {
+    text-align: center;
+    color: black;
+    padding-bottom: 20px;
+    border-style: solid;
+    border-width: 0px 10px;
+}
+.titre_h2 {
+    background-color: black;
+    height: 40px;
+    align-content: center;
+    color: white;
+}
+/*couleur background*/
+.bgColor1 {
+    background-color: grey;
 }
 
 /*Stylisation des bordures des autres Sections et du footer*/
@@ -197,46 +252,180 @@ li.main{
     padding: 20px;
 }
 
-#copyright{
+#copyright {
     padding: 15px;
     background: black;
     color: #fff;
     text-align: center;
 }
 
+/*Formulaire*/
+form {
+    margin: 3% 15%;
+}
+textarea, button {
+    margin: 1% 0%;
+}
+fieldset {
+    padding: 2%;
+    border: 2px black solid;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+label {
+    font-size: 1.1em;
+    padding-right: 10px;
+}
+.formNom, .choice {
+    text-align: start;
+    padding: 10px;
+}
+input, select {
+    flex-grow: 1;
+    font-size: 1em;
+    background-color: transparent;
+    border: 1px black solid;
+    border-radius: 3px;
+    color: black;
+    padding: 0.2%;
+}
+input:valid{
+    border: #96B63E solid 1px;
+}
+input:invalid{
+    border: red solid 1px;
+}
+.invalid{
+    color: red;
+}
+.choice div {
+    font-size: 0.8em;
+    margin-bottom: 2%;
+}
+input[type="radio"] {
+    margin: 10px 10px 0;
+    width: 18px;
+    height: 18px;
+}
+#message textarea {
+    width: 95%;
+    font-size: 1em;
+    flex-grow: 0.9em;
+    border-radius: 5px;
+    border: 1px black solid;
+    padding: 1%;
+}
+
+.checkbox {
+    padding: 8px;
+    border-radius: 10px;
+}
+.checkbox:hover {
+    background-color: #fdb5b5;
+}
+
+/*Style de la gestion des erreurs, lorsque la div n'est pas vide => s'il y a des erreurs sur les inputs*/
+.form-output:invalid {
+    border-top: 1px solid gray;
+    padding-top: 10px;
+}
+
 /*Stylisation page "Evènements"*/
-.events1{
+.events1 {
     text-align: justify;
 }
 
-.h4__events{
+.h4__events {
     background-color: rgb(182, 182, 182);
     margin-bottom: 10px;
 }
 
+/*Styles des sous-sections*/
+.animal {
+    background-color: white;
+    margin: 50px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    display: inline-block;
+}
+.info {
+    margin: 50px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.h2_animal {
+    font-size: 36px;
+    text-shadow: -5px 2px 2px rgb(194, 194, 194);
+    margin-bottom: 20px;
+}
+.h3_animal {
+    background-color: rgb(182, 182, 182);
+    text-align: center;
+    padding: 10px;
+    margin: 20px;
+}
+
+/*Styles des images des sous-sections*/
+.image_animal {
+    width: 75%;
+    border-radius: 25%;
+    max-width: 400px;
+}
+/*Style popup*/
+#overlay-popup{
+    position: fixed;
+    top: 115px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.602);
+    display: none;
+}
+#overlay-popup.active{
+    display: block !important;
+}
+.popup{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    position: absolute;
+    max-width: 500px;
+    padding: 25px;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button-popup{
+    position: absolute;
+    top: -10px;
+    right: -5px;
+    background-color: black;
+}
 
 /*MEDIA QUERIES*/
 
 /*Tablettes*/
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
     
     /*retirer le menu burger*/
-    .icon{
+    .icon {
         display: none;
     } 
     /*replacer le menu*/
-    .menu{
+    .menu {
         display: initial;
         position: static;
+        text-align: end;
     }
     /*placer les élément du menu en ligne*/
-    .nav-item{
+    .nav-item {
         display: inline-block;
-        margin-left: 20px;
         position: relative;
     }
+
     /*placer les éléments du sous-menu*/
-    .dropdown{
+    .dropdown {
         position: absolute;
         background-color: black;
         top: 70px;
@@ -244,10 +433,13 @@ li.main{
         padding-right: 30px;
         width: max-content;
     }
+    .haeder__button {
+        margin: 0 20px;
+    }
 }
 
 /*Tablettes en portrait*/
-@media screen and (min-width: 850px){
+@media screen and (min-width: 850px) {
 
     /*positionnement des sections*/
     .description, .objet, .signalement {
@@ -262,28 +454,42 @@ li.main{
     .objet {
         flex-direction: row-reverse;
     } 
-    .image__section{
+    .image__section {
         margin-top: 0;
+    }
+    .section {
+        display: flex;
+        justify-content: space-evenly;
+        margin: 10px;
+    }
+    .animal {
+        align-content: center;
+        width: 100%;
+        max-width: 600px;
+    }
+    .image_animal{
+        min-width: 250px;
+
     }
 }
 
 /*grand écran*/
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1200px) {
     /*Stylisation texte*/
-    h1{
+    h1 {
         font-size: 44px;
         text-shadow: -8px 5px 5px rgb(194, 194, 194);
     }
 
-    h2{
+    h2 {
         font-size: 32px;
     }
 
-    h3{
+    h3 {
         font-size: 28px;
     }
 
-    p{
+    p {
         font-size: 18px;
     }
 }
