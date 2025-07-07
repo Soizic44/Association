@@ -10,7 +10,7 @@ const formulaire = document.getElementById("formulaire");
 const inputNom = document.getElementById("name");
 const inputPrenom = document.getElementById("firstname");
 const inputMail = document.getElementById("email");
-const inputMessage = document.getElementById("message");
+const inputMessage = document.getElementById("text");
 const btnValidation = document.getElementById("envoiContact");
 
 inputNom.addEventListener("keyup", validateForm); 
@@ -24,7 +24,7 @@ function validateForm(){
     const nomOk = validateRequired(inputNom);
     const prenomOk = validateRequired(inputPrenom);
     const mailOk = validateMail(inputMail);
-    const messageOk = validateMessage(inputMessage);
+    const messageOk = validateRequired(inputMessage);
 
     if(nomOk && prenomOk && mailOk && messageOk){
         btnValidation.disabled = false;
@@ -64,23 +64,6 @@ function validateMail(input){
     }
 }
 
-//Définir mon regex message
-function validateMessage(input){
-    const messageRegex = /^(?=.{10,})[a-zA-Z0-9\s\-,]+.\*?$/;
-    const messageContact = input.value;
-
-    if(messageContact.match(messageRegex)){
-        input.classList.add("valid");
-        input.classList.remove("invalid"); 
-        return true;
-    }
-    else{
-        input.classList.remove("valid");
-        input.classList.add("invalid");
-        return false;
-    }
-}
-
  //méthode permettant d'afficher l'input société si selection "professionnel"
 document.getElementById('professionnel').change = function(){ 
     afficheSociete('.professionnel', this.checked); 
@@ -99,7 +82,7 @@ function afficheSociete(){
 //méthode permettant de masquer l'input Société si selection "particulier"
 document.getElementById('particulier').change = function(){ 
     maskSociete('.particulier', this.checked); 
-} 
+}
 function maskSociete(){
     if (formulaire.particulier.checked){
         document.getElementById("prof").style.display ="none";
@@ -110,3 +93,21 @@ function maskSociete(){
         document.getElementById("prof").style.display ="null";
     }
 }
+
+//addEventListener pour récupérer les données du formulaire
+btnValidation.addEventListener('click', function(event){
+        // Empêche le comportement par défaut du bouton. Permet qu'au clic la page ne se recharge pas et envoi les informations
+    event.preventDefault();
+    // Récupération des valeurs des champs du formulaire
+    let formData = new FormData();
+    formData.append("nom", document.getElementById("name").value.trim());
+    formData.append("prenom", document.getElementById("firstname").value.trim());
+    formData.append("societe", document.getElementById("societe").value.trim());
+    formData.append("objet", document.getElementById("objet").value.trim());
+    formData.append("email", document.getElementById("email").value.trim());
+    formData.append("text", document.getElementById("text").value.trim());
+
+    // Affichage des données dans la console pour vérification
+    console.log(formData);
+    // Envoi des données du formulaire via AJAX 
+});
