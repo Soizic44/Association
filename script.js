@@ -9,6 +9,7 @@ function togglePopup(){
 const formulaire = document.getElementById("formulaire");
 const inputNom = document.getElementById("name");
 const inputPrenom = document.getElementById("firstname");
+const inputSociete = document.getElementById("societe");
 const inputMail = document.getElementById("email");
 const inputMessage = document.getElementById("text");
 const btnValidation = document.getElementById("envoiContact");
@@ -20,8 +21,46 @@ inputPrenom.addEventListener("keyup", validateForm);
 inputMail.addEventListener("keyup", validateForm);
 inputMessage.addEventListener("keyup", validateForm);
 
+//Fonction ajaxSend (asynchrone)
+async function ajaxSend(e) {
+    try {
+        e.preventDefault();
 
-//Function permettant de valider tout le formulaire
+        //Création d'un nouvel objet FomData
+        let formData = new FormData();
+        formData.append("nom", inputNom.value.trim());
+        formData.append("prenom", inputPrenom.value.trim());
+        formData.append("societe", inputSociete.value.trim());
+        formData.append("email", inputMail.value.trim());
+        formData.append("message", inputMessage.value.trim());
+
+        let response = await fetch("send.php", {
+            method: "POST",
+            body: formData
+        });
+
+        //Conversion de la réponse en JSON
+        let datas = await response.json();
+
+        //Création clé succès
+        if(!datas.success) {
+            formOutput.textContent = datas.message;
+            formOutput.classList.add("invalid");
+            return false;
+        } else {
+            formOutput.textContent = datas.message;
+            formOutput.classList.add("valid");
+            return true;
+        }
+
+    } catch(invalid) {
+        formOutput.textContent = "Erreur lors de l'envoi du mail";
+        formOutput.classList.add("invalid");
+        return false;
+    }  
+}
+
+//Fonction permettant de valider tout le formulaire
 function validateForm(){
     const nomOk = validateRequired(inputNom);
     const prenomOk = validateRequired(inputPrenom);
@@ -30,6 +69,8 @@ function validateForm(){
 
     if(nomOk && prenomOk && mailOk && messageOk){
         btnValidation.disabled = false; //Débloque le bouton d'envoi du formulaire
+        formOutput.textContent = "";
+        ajaxSend(e);
     }
     else{
         btnValidation.disabled = true; //bloque le bouton d'envoi du formulaire
@@ -58,7 +99,7 @@ function validateMail(input){
     if(mailValue.match(emailRegex)){
         input.classList.add("valid");
         input.classList.remove("invalid"); 
-        formOutput.textContent = "";
+        formOutput.textContent = ""; //Effacer message erreur email
         return true;
     }
     else{
