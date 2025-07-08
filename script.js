@@ -12,6 +12,8 @@ const inputPrenom = document.getElementById("firstname");
 const inputMail = document.getElementById("email");
 const inputMessage = document.getElementById("text");
 const btnValidation = document.getElementById("envoiContact");
+const pub = document.getElementById("publicite");
+const formOutput = document.getElementById("formOutput");
 
 inputNom.addEventListener("keyup", validateForm); 
 inputPrenom.addEventListener("keyup", validateForm);
@@ -27,10 +29,10 @@ function validateForm(){
     const messageOk = validateRequired(inputMessage);
 
     if(nomOk && prenomOk && mailOk && messageOk){
-        btnValidation.disabled = false;
+        btnValidation.disabled = false; //Débloque le bouton d'envoi du formulaire
     }
     else{
-        btnValidation.disabled = true;
+        btnValidation.disabled = true; //bloque le bouton d'envoi du formulaire
     }
 }
 
@@ -41,6 +43,7 @@ function validateRequired(input){
         return true; 
     }
     else{
+        formOutput.textContent = "Merci de remplir les champs manquants";
         input.classList.remove("valid");
         input.classList.add("invalid");
         return false;
@@ -50,14 +53,16 @@ function validateRequired(input){
 //Définir mon regex Email
 function validateMail(input){       
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mailContact = input.value;
+    const mailValue = input.value;
 
-    if(mailContact.match(emailRegex)){
+    if(mailValue.match(emailRegex)){
         input.classList.add("valid");
         input.classList.remove("invalid"); 
+        formOutput.textContent = "";
         return true;
     }
     else{
+        formOutput.textContent = "Votre adresse email est incorecte !";
         input.classList.remove("valid");
         input.classList.add("invalid");
         return false;
@@ -87,27 +92,9 @@ function maskSociete(){
     if (formulaire.particulier.checked){
         document.getElementById("prof").style.display ="none";
         //Retirer l'attribut d'obligation pour validation "requis" si sélection du radio "particulier"
-        document.getElementById("societe").removeAttribute('required'); 
+        document.getElementById("societe").removeAttribute("required",""); 
     } 
     else{
         document.getElementById("prof").style.display ="null";
     }
 }
-
-//addEventListener pour récupérer les données du formulaire
-btnValidation.addEventListener('click', function(event){
-        // Empêche le comportement par défaut du bouton. Permet qu'au clic la page ne se recharge pas et envoi les informations
-    event.preventDefault();
-    // Récupération des valeurs des champs du formulaire
-    let formData = new FormData();
-    formData.append("nom", document.getElementById("name").value.trim());
-    formData.append("prenom", document.getElementById("firstname").value.trim());
-    formData.append("societe", document.getElementById("societe").value.trim());
-    formData.append("objet", document.getElementById("objet").value.trim());
-    formData.append("email", document.getElementById("email").value.trim());
-    formData.append("text", document.getElementById("text").value.trim());
-
-    // Affichage des données dans la console pour vérification
-    console.log(formData);
-    // Envoi des données du formulaire via AJAX 
-});

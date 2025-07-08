@@ -315,7 +315,6 @@ input[type="radio"] {
     border: 1px black solid;
     padding: 1%;
 }
-
 .checkbox {
     padding: 8px;
     border-radius: 10px;
@@ -325,9 +324,9 @@ input[type="radio"] {
 }
 
 /*Style de la gestion des erreurs, lorsque la div n'est pas vide => s'il y a des erreurs sur les inputs*/
-.form-output:invalid {
-    border-top: 1px solid gray;
-    padding-top: 10px;
+#formOutput {
+    color: red;
+    padding-top: 20px;
 }
 
 /*Stylisation page "Evènements"*/
