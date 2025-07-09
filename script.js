@@ -21,7 +21,7 @@ inputPrenom.addEventListener("keyup", validateForm);
 inputMail.addEventListener("keyup", validateForm);
 inputMessage.addEventListener("keyup", validateForm);
 
-//Fonction ajaxSend (asynchrone)
+//Fonction ajaxSend (asynchrone) : liaison du Frontend avec le Backend
 async function ajaxSend(e) {
     try {
         e.preventDefault();
@@ -34,16 +34,16 @@ async function ajaxSend(e) {
         formData.append("email", inputMail.value.trim());
         formData.append("message", inputMessage.value.trim());
 
-        let response = await fetch("send.php", {
+        let response = await fetch("/send.php", {
             method: "POST",
-            body: formData
+            body: formData,
         });
 
         //Conversion de la réponse en JSON
         let datas = await response.json();
 
         //Création clé succès
-        if(!datas.success) {
+        if(!datas.valid) {
             formOutput.textContent = datas.message;
             formOutput.classList.add("invalid");
             return false;
