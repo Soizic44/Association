@@ -59,7 +59,7 @@ async function ajaxSend(e) {
     } catch(invalid) {
         formOutput.textContent = "Erreur lors de l'envoi du mail";
         formOutput.classList.add("invalid");
-        //Quand la réponse est transmise on arrète le loader de gestion d'attente
+        //Quand la réponse est transmise on arrête le loader de gestion d'attente
         loader.classList.remove("active");
         return false;
     }  
