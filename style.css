@@ -403,10 +403,10 @@ input[type="radio"] {
 }
 
 /*Loader : animayion d'attente chargement page back*/
-.loaderContent{
+#loaderContent{
     display: none;
 }
-.loaderContent.active{
+#loaderContent.active{
     position: fixed;
     top: 0;
     right: 0;
@@ -442,7 +442,7 @@ input[type="radio"] {
 /*Règle d'animation*/
 @keyframes grow-shrink {
     0%, 100% { 
-        transform: scale(0.5); 
+        transform: scale(0.2); 
     }
     50% { 
         transform: scale(1.5); 

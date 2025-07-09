@@ -6,6 +6,7 @@ function togglePopup(){
 
 // fonctions page "formulaire de contact"
 //Implémenter le JS de ma page
+const loader = document.getElementById("loaderContent");
 const formulaire = document.getElementById("formulaire");
 const inputNom = document.getElementById("name");
 const inputPrenom = document.getElementById("firstname");
@@ -41,6 +42,8 @@ async function ajaxSend(e) {
 
         //Conversion de la réponse en JSON
         let datas = await response.json();
+        //Quand la réponse est transmise on arrête le loader de gestion d'attente
+        loader.classList.remove("active"); 
 
         //Création clé succès
         if(!datas.valid) {
@@ -56,6 +59,8 @@ async function ajaxSend(e) {
     } catch(invalid) {
         formOutput.textContent = "Erreur lors de l'envoi du mail";
         formOutput.classList.add("invalid");
+        //Quand la réponse est transmise on arrète le loader de gestion d'attente
+        loader.classList.remove("active");
         return false;
     }  
 }
@@ -68,12 +73,17 @@ function validateForm(){
     const messageOk = validateRequired(inputMessage);
 
     if(nomOk && prenomOk && mailOk && messageOk){
-        btnValidation.disabled = false; //Débloque le bouton d'envoi du formulaire
+        //Débloque le bouton d'envoi du formulaire
+        btnValidation.disabled = false; 
         formOutput.textContent = "";
-        ajaxSend(e);
+        //mise en place du loader pour la gestion d'attente de réponse côté backend
+        loader.classList.add("active");
+        //Appel de la fonction asynchrone "ajax"
+        ajaxSend(e); 
     }
     else{
-        btnValidation.disabled = true; //bloque le bouton d'envoi du formulaire
+        //bloque le bouton d'envoi du formulaire
+        btnValidation.disabled = true; 
     }
 }
 
@@ -98,8 +108,9 @@ function validateMail(input){
 
     if(mailValue.match(emailRegex)){
         input.classList.add("valid");
-        input.classList.remove("invalid"); 
-        formOutput.textContent = ""; //Effacer message erreur email
+        input.classList.remove("invalid");
+        //Effacer message erreur email
+        formOutput.textContent = ""; 
         return true;
     }
     else{
