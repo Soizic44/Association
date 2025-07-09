@@ -65,6 +65,19 @@ async function ajaxSend(e) {
     }  
 }
 
+//fonction permettant de mettre en place le loader de gestion d'attente
+document.getElementById("envoiContact").onclick = function(){
+    afficheLoader("envoiContact", this.click);
+}
+function afficheLoader(){
+    if(formulaire.envoiContact.click){
+        loader.classList.add("active");
+    }
+    else{
+        loader.classList.remove("active");
+    } 
+}
+
 //Fonction permettant de valider tout le formulaire
 function validateForm(){
     const nomOk = validateRequired(inputNom);
@@ -76,8 +89,6 @@ function validateForm(){
         //Débloque le bouton d'envoi du formulaire
         btnValidation.disabled = false; 
         formOutput.textContent = "";
-        //mise en place du loader pour la gestion d'attente de réponse côté backend
-        loader.classList.add("active");
         //Appel de la fonction asynchrone "ajax"
         ajaxSend(e); 
     }
