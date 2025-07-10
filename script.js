@@ -1,7 +1,4 @@
 // fonction pour popup page "publicité" 
-document.getElementById("button-popup").onclick = function(){
-    togglePopup("button-popup", this.click);
-}
 function togglePopup(){
     let popup = document.getElementById("overlay-popup");
     popup.classList.toggle("active");
@@ -52,7 +49,7 @@ async function ajaxSend(e) {
         //Création clé succès
         if(!datas.valid) {
             formOutput.textContent = datas.message;
-            formOutput.classList.add("invalid");
+            formOutput.classList.add("error");
             return false;
         } else {
             formOutput.textContent = datas.message;
@@ -60,9 +57,9 @@ async function ajaxSend(e) {
             return true;
         }
 
-    } catch(invalid) {
+    } catch(error) {
         formOutput.textContent = "Erreur lors de l'envoi du mail";
-        formOutput.classList.add("invalid");
+        formOutput.classList.add("error");
         //Quand la réponse est transmise on arrête le loader de gestion d'attente
         loader.classList.remove("active");
         return false;

@@ -10,7 +10,7 @@ class Mail {
     private $destinataire;
 
     //Affectation du contenu du formulaire
-    public function __construct($nom, $prenom, $societe, $objet, $email, $message, $destinataire='fetiveau.soizic@hotmail.fr') {
+    public function __construct($nom, $prenom, $societe, $objet, $email, $message, $destinataire='fetiveau.soizic1@hotmail.fr') {
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->societe = $societe;
