@@ -1,4 +1,7 @@
-// fonction pour popup page "publicité"
+// fonction pour popup page "publicité" 
+document.getElementById("button-popup").onclick = function(){
+    togglePopup("button-popup", this.click);
+}
 function togglePopup(){
     let popup = document.getElementById("overlay-popup");
     popup.classList.toggle("active");
@@ -11,10 +14,10 @@ const formulaire = document.getElementById("formulaire");
 const inputNom = document.getElementById("name");
 const inputPrenom = document.getElementById("firstname");
 const inputSociete = document.getElementById("societe");
+const inputObjet = document.getElementById("objet");
 const inputMail = document.getElementById("email");
 const inputMessage = document.getElementById("text");
 const btnValidation = document.getElementById("envoiContact");
-const pub = document.getElementById("publicite");
 const formOutput = document.getElementById("formOutput");
 
 inputNom.addEventListener("keyup", validateForm); 
@@ -32,11 +35,12 @@ async function ajaxSend(e) {
         formData.append("nom", inputNom.value.trim());
         formData.append("prenom", inputPrenom.value.trim());
         formData.append("societe", inputSociete.value.trim());
+        formData.append("objet", inputObjet.value.trim());
         formData.append("email", inputMail.value.trim());
         formData.append("message", inputMessage.value.trim());
 
-        let response = await fetch("/send.php", {
-            method: "POST",
+        let response = await fetch('/mail/send.php', {
+            method: 'POST',
             body: formData,
         });
 
