@@ -21,10 +21,10 @@ class Mail {
     }
 
     public function envoiMail() {
-        $expediteur = 'noreply@refugedelespoir.fr';
+        $expediteur = 'noreply@association.fr';
         $sujet = 'Nouveau message';
 
-        $header = "Content-type: text/hyml; charset=UTF-8\r\n";
+        $header = "Content-type: text/html; charset=UTF-8\r\n";
         $header .= "FROM: $expediteur\r\n";
 
         $message = '

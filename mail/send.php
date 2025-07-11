@@ -1,7 +1,7 @@
 <?php
 //Entête
 header('Content-type:application/json');
-include('../mail/mail.php');
+include('/xampp/htdocs/Association/mail/mail.php');
 
 //Vérification des entrés issues du formulaire
 //Vérification que les diférents champs sont correctement rempli 

@@ -295,7 +295,7 @@ input:valid{
 input:invalid{
     border: red solid 1px;
 }
-.invalid{
+.invalid, .error{
     color: red;
 }
 .choice div {
@@ -307,7 +307,7 @@ input[type="radio"] {
     width: 18px;
     height: 18px;
 }
-#message textarea {
+#message_form textarea {
     width: 95%;
     font-size: 1em;
     flex-grow: 0.9em;

@@ -1,4 +1,4 @@
-// fonction pour popup page "publicité" 
+// fonction pour popup page "publicité"
 function togglePopup(){
     let popup = document.getElementById("overlay-popup");
     popup.classList.toggle("active");
@@ -6,96 +6,37 @@ function togglePopup(){
 
 // fonctions page "formulaire de contact"
 //Implémenter le JS de ma page
-const loader = document.getElementById("loaderContent");
-const formulaire = document.getElementById("formulaire");
-const inputNom = document.getElementById("name");
-const inputPrenom = document.getElementById("firstname");
-const inputSociete = document.getElementById("societe");
-const inputObjet = document.getElementById("objet");
-const inputMail = document.getElementById("email");
-const inputMessage = document.getElementById("text");
+const formulaire    = document.getElementById("formulaire");
+const inputNom      = document.getElementById("nom");
+const inputPrenom   = document.getElementById("prenom");
+const inputSociete  = document.getElementById("societe");
+const inputObjet    = document.getElementById("objet");
+const inputMail     = document.getElementById("email");
+const inputMessage  = document.getElementById("message");
 const btnValidation = document.getElementById("envoiContact");
-const formOutput = document.getElementById("formOutput");
+const erreur        = document.getElementById("formOutput");
+const loader        = document.getElementById("loaderContent");
 
+//Appel des fonctions
 inputNom.addEventListener("keyup", validateForm); 
 inputPrenom.addEventListener("keyup", validateForm);
 inputMail.addEventListener("keyup", validateForm);
 inputMessage.addEventListener("keyup", validateForm);
 
-//Fonction ajaxSend (asynchrone) : liaison du Frontend avec le Backend
-async function ajaxSend(e) {
-    try {
-        e.preventDefault();
-
-        //Création d'un nouvel objet FomData
-        let formData = new FormData();
-        formData.append("nom", inputNom.value.trim());
-        formData.append("prenom", inputPrenom.value.trim());
-        formData.append("societe", inputSociete.value.trim());
-        formData.append("objet", inputObjet.value.trim());
-        formData.append("email", inputMail.value.trim());
-        formData.append("message", inputMessage.value.trim());
-
-        let response = await fetch('/mail/send.php', {
-            method: 'POST',
-            body: formData,
-        });
-
-        //Conversion de la réponse en JSON
-        let datas = await response.json();
-        //Quand la réponse est transmise on arrête le loader de gestion d'attente
-        loader.classList.remove("active"); 
-
-        //Création clé succès
-        if(!datas.valid) {
-            formOutput.textContent = datas.message;
-            formOutput.classList.add("error");
-            return false;
-        } else {
-            formOutput.textContent = datas.message;
-            formOutput.classList.add("valid");
-            return true;
-        }
-
-    } catch(error) {
-        formOutput.textContent = "Erreur lors de l'envoi du mail";
-        formOutput.classList.add("error");
-        //Quand la réponse est transmise on arrête le loader de gestion d'attente
-        loader.classList.remove("active");
-        return false;
-    }  
-}
-
-//fonction permettant de mettre en place le loader de gestion d'attente
-document.getElementById("envoiContact").onclick = function(){
-    afficheLoader("envoiContact", this.click);
-}
-function afficheLoader(){
-    if(formulaire.envoiContact.click){
-        loader.classList.add("active");
-    }
-    else{
-        loader.classList.remove("active");
-    } 
-}
-
-//Fonction permettant de valider tout le formulaire
+//Function permettant de valider tout le formulaire
 function validateForm(){
     const nomOk = validateRequired(inputNom);
     const prenomOk = validateRequired(inputPrenom);
     const mailOk = validateMail(inputMail);
     const messageOk = validateRequired(inputMessage);
+    const inputRequired = validateRequired(inputNom && inputPrenom && inputMail &&  inputMessage);
 
     if(nomOk && prenomOk && mailOk && messageOk){
-        //Débloque le bouton d'envoi du formulaire
-        btnValidation.disabled = false; 
-        formOutput.textContent = "";
-        //Appel de la fonction asynchrone "ajax"
-        ajaxSend(e); 
+        btnValidation.disabled = false;
+        erreur.textContent = "";
     }
     else{
-        //bloque le bouton d'envoi du formulaire
-        btnValidation.disabled = true; 
+        btnValidation.disabled = true;
     }
 }
 
@@ -106,9 +47,10 @@ function validateRequired(input){
         return true; 
     }
     else{
-        formOutput.textContent = "Merci de remplir les champs manquants";
         input.classList.remove("valid");
         input.classList.add("invalid");
+        erreur.textContent = "Merci de remplir les champs manquants";
+        erreur.classList.add("invalid");
         return false;
     }
 }
@@ -116,22 +58,22 @@ function validateRequired(input){
 //Définir mon regex Email
 function validateMail(input){       
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const mailValue = input.value;
+    const mailContact = input.value;
 
-    if(mailValue.match(emailRegex)){
+    if(mailContact.match(emailRegex)){
         input.classList.add("valid");
-        input.classList.remove("invalid");
-        //Effacer message erreur email
-        formOutput.textContent = ""; 
+        input.classList.remove("invalid"); 
         return true;
     }
     else{
-        formOutput.textContent = "Votre adresse email est incorecte !";
         input.classList.remove("valid");
         input.classList.add("invalid");
+        erreur.textContent = "Votre adresse email est incorrecte";
         return false;
     }
 }
+
+
 
  //méthode permettant d'afficher l'input société si selection "professionnel"
 document.getElementById('professionnel').change = function(){ 
