@@ -10,7 +10,7 @@ class Mail {
     private $destinataire;
 
     //Affectation du contenu du formulaire
-    public function __construct($nom, $prenom, $societe, $objet, $email, $message, $destinataire='fetiveau.soizic1@hotmail.fr') {
+    public function __construct($nom, $prenom, $societe, $objet, $email, $message, $destinataire='fetiveau.soizic1@gmail.com') {
         $this->nom = $nom;
         $this->prenom = $prenom;
         $this->societe = $societe;
@@ -33,13 +33,25 @@ class Mail {
             <head>
                 <meta charset="UTF-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <link rel="stylesheet" href="/mail/mail.css">
-                <title>Nouveau message de contact</title>
+                <title>Nouveau message</title>
+            <style>
+                main{
+                    width: 95%;
+                    margin: auto;
+                    font-family: sans-serif;
+                }
+                header{
+                    background-color: black;
+                    color: white;
+                    text-align: center;
+                    padding: 12px;
+                }
+            </style>
             </head>
             <body>
                 <main>
                     <header>
-                        <h1>Le refuge de lespoir</h1>
+                        <h1>association</h1>
                         <h2>Nouveau message</h2>
                     </header>
                     <article>
@@ -48,13 +60,14 @@ class Mail {
                         <p><strong>- Prénom : </strong>'.$this->prenom.'</p>
                         <p><strong>- Société : </strong>'.$this->societe.'</p>
                         <p><strong>- Objet : </strong>'.$this->objet.'</p>
-                        <p><strong>- Email : </strong>'.$this->email.'</p>
-                        <p><strong>- Message : </strong><br>'.nl2br($this->message).'</p>
+                        <p><strong>- Email: </strong>'.$this->email.'</p>
+                        <p><strong>- Message: </strong><br>'.nl2br($this->message).'</p>
                     </article>
                 </main>
             </body>
-            </html> 
+            </html>
         ';
         return mail($this->destinataire, $sujet, $message, $header);
     }
 }
+

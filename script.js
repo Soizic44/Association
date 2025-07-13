@@ -23,13 +23,70 @@ inputPrenom.addEventListener("keyup", validateForm);
 inputMail.addEventListener("keyup", validateForm);
 inputMessage.addEventListener("keyup", validateForm);
 
+
+// Fonction ajaxSend
+async function ajaxSend(event) {
+    try {
+        event.preventDefault();
+
+        /*** Créer un nouvel objet FormData */
+        let formData = new FormData();
+        formData.append('nom', inputNom.value.trim());
+        formData.append('prenom', inputPrenom.value.trim());
+        formData.append('societe', inputSociete.value.trim());
+        formData.append('objet', inputObjet.value.trim());
+        formData.append('email', inputMail.value.trim());
+        formData.append('message', inputMessage.value.trim());
+        
+        console.log(formData);
+
+        let response = await fetch('mail/send.php', {
+            method: "POST",
+            body: formData
+        });
+
+        let datas = await response.json();
+        loader.classList.remove('active');
+
+        if(!datas.success) {
+            erreur.textContent = datas.message;
+            erreur.classList.add("invalid");
+        } else {
+            erreur.textContent = datas.message;
+            erreur.classList.remove("invalid");
+            erreur.classList.add("valid");
+            let button = document.querySelector("#formulaire button");
+            button.style.display = "none";
+        }
+
+    } catch(invalid) {
+        erreur.textContent = "Erreur lors de l'envoi du mail";
+        erreur.classList.add("invalid");
+        //Quand la réponse est transmise => arrêt du loader de gestion d'attente
+        loader.classList.remove('active');
+    }
+}
+
+//fonction permettant de mettre en place le loader de gestion d'attente
+document.getElementById("envoiContact").onclick = function(){
+    afficheLoader("envoiContact", this.click);
+}
+function afficheLoader(){
+    if(formulaire.envoiContact.click){
+        loader.classList.add("active");
+    }
+    else{
+        loader.classList.remove("active");
+    } 
+}
+
+
 //Function permettant de valider tout le formulaire
 function validateForm(){
     const nomOk = validateRequired(inputNom);
     const prenomOk = validateRequired(inputPrenom);
     const mailOk = validateMail(inputMail);
     const messageOk = validateRequired(inputMessage);
-    const inputRequired = validateRequired(inputNom && inputPrenom && inputMail &&  inputMessage);
 
     if(nomOk && prenomOk && mailOk && messageOk){
         btnValidation.disabled = false;
@@ -72,8 +129,6 @@ function validateMail(input){
         return false;
     }
 }
-
-
 
  //méthode permettant d'afficher l'input société si selection "professionnel"
 document.getElementById('professionnel').change = function(){ 
