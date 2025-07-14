@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact du refuge de l'espoir</title>
+    <meta name="description" content="contactez notre association : Le refuge de l'espoir">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" href="/assets/Logo refuge.png" sizes="114x114" type="image/png">
+    <script src="/script.js" defer></script>
+</head>
+
+<body>
+    <!--START : header-->
+    <header class="header">
+
+        <!--START : navbar-->
+        <nav class="navbar">
+            <img class="logo" src="/assets/Logo refuge.png" alt="Logo de l'association Le refuge de l'espoir"/>
+            <a href="tel:0668369763" target="_blank" class="haeder__button">&#9743;</a>
+            
+            <!--Création Burger-->
+            <label for="btn" class="icon">
+                <svg viewBox="0 0 100 80" width="40" height="40">
+                    <rect width="100" height="15"></rect>
+                    <rect y="35" width="100" height="15"></rect>
+                    <rect y="70" width="100" height="15"></rect>
+                </svg>
+            </label>
+            <input type="checkbox" id="btn">
+            
+            <!--Navigation principale / menu-->
+            <ul class="menu">
+                <li class="nav-item"><a href="/index.html">Accueil</a></li>
+                <li class="nav-item">
+                    <label for="btn2" class="deroulant">Adoption </label>
+                    <input type="checkbox" id="btn2">
+                    
+                    <!--1er sous-menu-->
+                    <ul class="dropdown">
+                        <li class="drop-item"><a href="/pages/chiens.html">Nos chiens</a></li>
+                        <li class="drop-item"></li><a href="/pages/chats.html">Nos chats</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <label for="btn3" class="deroulant">Nous aider </label>
+                    <input type="checkbox" id="btn3">
+                    
+                    <!--2eme sous-menu-->
+                    <ul class="dropdown">
+                        <li class="drop-item"><a href="/pages/formulaire.html">Devenir FA / Adhérent(e)</a></li>
+                        <li class="drop-item"></li><a href="/pages/dons.html">Faire un don</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="/pages/evenements.html">Evènements</a></li>
+                <li class="nav-item"><a href="/pages/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <!--END : Navbar-->
+
+    </header>
+    <!--END : header-->
+
+     <!--START : main-->
+    <main class="main">
+        <!--START : hero-->
+         <section class="hero">
+            <h1>Le refuge de l'espoir</h1>
+            <h2 class="h2__hero">Soins et protection animale</h2>
+            <div class="image__hero">
+                <p>Notre Association fonctionne grâce à vos dons.</p> 
+            </div>
+        </section>
+        <!--END : hero-->
+
+        <!--START : Contact-->
+        <section class="container">
+            <h2 class="titre_h2">Devenir FA / Adhérent(e)</h2>
+
+            <div class="info">
+                <p>Pour toutes informations, veuillez remplir ce formulaire ci-dessous.<br>
+                    Nous répondrons à vos demandes par mail.</p>
+            </div>
+
+            <!--START : Formulaire-->
+            <form action="" method="post" class="containForm destop" id="formulaire">
+                <fieldset>
+                    <legend><h3>Vos informations</h3></legend>
+                    <div class="formNom">
+                        <label for="nom">Nom :</label>
+                        <input type="text" name="nom" id="nom" autocomplete="on" placeholder="Dubois" required>
+                    </div>
+
+                    <div class="formNom">
+                        <label for="prenom">Prénom :</label>
+                        <input type="text" name="prenom" id="prenom" autocomplete="on" placeholder="Martin" required>
+                    </div> 
+
+                    <div class="formNom">
+                        <label>Statut :
+                            <div>
+                                <input class="checkbox" type="radio" name="statut" id="professionnel" onclick="afficheSociete()" checked>
+                                <label for="professionnel">Professionnel</label>
+                            </div>
+                            <div>
+                                <input class="checkbox" type="radio" name="statut" id="particulier" onclick="maskSociete()">
+                                <label for="particulier">Particulier</label>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="formNom" id="prof">
+                        <label for="societe">Société :</label>
+                        <input type="text" id="societe" name="societe" placeholder="Nom de la société" required>
+                    </div>
+                </fieldset>
+
+                <fieldset id="message_form">
+                    <legend><h3>Message</h3></legend>
+
+                    <div class="choice">
+                        <label for="objet">Objet :</label>
+                        <select type="text" name="objet" id="objet" required>
+                            <optgroup label="physique">
+                                <option value="FA">Devenir FA</option>
+                                <option value="bénévolat">Devenir Bénévole</option>
+                            </optgroup>
+                            <optgroup label="financier">
+                                <option value="adhérer">Devenir adhérent(e)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="choice">
+                        <label for="email">Email :</label>
+                        <input type="email" id="email" name="email" autocomplete="on" placeholder="email@mail.com" required>
+                    </div>
+                    <textarea name="message" id="message" cols="50" rows="10" placeholder="Merci de nous indiquer tout ce que vous jugez utile pour votre demande. exemple : si bénévole (Disponibilités...), si FA : Conditions d'Accueil..." required></textarea>
+                </fieldset>
+                <button type="submit" id="envoiContact" name="send" onclick="send(event)">Envoyer</button>
+                <div id="formOutput"></div>
+            </form>
+            <!--END : Formulaire-->
+        </section>
+        <!--END : Contact-->
+
+        <!--START : Animation d'attente-->
+        <section id="loaderContent">
+            <div class="loader">
+                <div class="load1"></div>
+                <div class="load2"></div>
+                <div class="load3"></div>
+            </div>
+        </section>
+    </main>
+    <!--END : main-->
+
+    <!--START : footer-->
+    <footer id="copyright">
+            <p>Copyright © 2024 Le refuge de l'espoir <br>/ Tous droits réservés</p>
+    </footer>
+    <!--END : footer-->
+    <script>
+        const send = async (event) => {
+            event.preventDefault();
+            let nom = document.querySelector("#nom").value.trim();
+            let prenom = document.querySelector("#prenom").value.trim();
+            let societe = document.querySelector("#societe").value.trim();
+            let objet = document.querySelector("#objet").value.trim();
+            let email = document.querySelector("#email").value.trim();
+            let message = document.querySelector("#message").value.trim();
+
+            const response = await fetch('mail.php', {
+                method: "POST",
+                body: JSON.stringify({
+                    nom: nom,
+                    prenom: prenom,
+                    societe: societe,
+                    objet: objet,
+                    mail: mail,
+                    message: message
+                }),
+                headers: {
+                    "Content-type": "application/json"
+                }
+            })
+            const res = await response.json()
+            console.log(res)
+        }
+        
+
+                
+            
+    </script>
+
+</body>
+</html>

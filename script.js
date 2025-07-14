@@ -25,18 +25,18 @@ inputMessage.addEventListener("keyup", validateForm);
 
 
 // Fonction ajaxSend
-async function ajaxSend(event) {
+async function ajaxSend(e) {
     try {
-        event.preventDefault();
+        e.preventDefault();
 
         /*** Créer un nouvel objet FormData */
         let formData = new FormData();
-        formData.append('nom', inputNom.value.trim());
-        formData.append('prenom', inputPrenom.value.trim());
-        formData.append('societe', inputSociete.value.trim());
-        formData.append('objet', inputObjet.value.trim());
-        formData.append('email', inputMail.value.trim());
-        formData.append('message', inputMessage.value.trim());
+        formData.append("nom", inputNom.value.trim());
+        formData.append("prenom", inputPrenom.value.trim());
+        formData.append("societe", inputSociete.value.trim());
+        formData.append("objet", inputObjet.value.trim());
+        formData.append("email", inputMail.value.trim());
+        formData.append("message", inputMessage.value.trim());
         
         console.log(formData);
 
@@ -46,9 +46,9 @@ async function ajaxSend(event) {
         });
 
         let datas = await response.json();
-        loader.classList.remove('active');
+        loader.classList.remove("active");
 
-        if(!datas.success) {
+        if(!datas.valid) {
             erreur.textContent = datas.message;
             erreur.classList.add("invalid");
         } else {
@@ -59,11 +59,11 @@ async function ajaxSend(event) {
             button.style.display = "none";
         }
 
-    } catch(invalid) {
+    } catch(error){
         erreur.textContent = "Erreur lors de l'envoi du mail";
         erreur.classList.add("invalid");
         //Quand la réponse est transmise => arrêt du loader de gestion d'attente
-        loader.classList.remove('active');
+        loader.classList.remove("active");
     }
 }
 
