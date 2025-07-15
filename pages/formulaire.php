@@ -83,7 +83,7 @@
             </div>
 
             <!--START : Formulaire-->
-            <form action="" method="post" class="containForm destop" id="formulaire">
+            <form action="/mail/mail.php" method="post" class="containForm destop" id="formulaire">
                 <fieldset>
                     <legend><h3>Vos informations</h3></legend>
                     <div class="formNom">
@@ -137,7 +137,7 @@
                     </div>
                     <textarea name="message" id="message" cols="50" rows="10" placeholder="Merci de nous indiquer tout ce que vous jugez utile pour votre demande. exemple : si bénévole (Disponibilités...), si FA : Conditions d'Accueil..." required></textarea>
                 </fieldset>
-                <button type="submit" id="envoiContact" name="send" onclick="send(event)">Envoyer</button>
+                <button type="submit" id="envoiContact" name="envoyer">Envoyer</button>
                 <div id="formOutput"></div>
             </form>
             <!--END : Formulaire-->
@@ -150,8 +150,14 @@
                 <div class="load1"></div>
                 <div class="load2"></div>
                 <div class="load3"></div>
+                <?php
+                    echo "<p>test</p>";
+                    $test = 0;
+                ?>
             </div>
+            
         </section>
+        
     </main>
     <!--END : main-->
 
@@ -160,38 +166,7 @@
             <p>Copyright © 2024 Le refuge de l'espoir <br>/ Tous droits réservés</p>
     </footer>
     <!--END : footer-->
-    <script>
-        const send = async (event) => {
-            event.preventDefault();
-            let nom = document.querySelector("#nom").value.trim();
-            let prenom = document.querySelector("#prenom").value.trim();
-            let societe = document.querySelector("#societe").value.trim();
-            let objet = document.querySelector("#objet").value.trim();
-            let email = document.querySelector("#email").value.trim();
-            let message = document.querySelector("#message").value.trim();
-
-            const response = await fetch('mail.php', {
-                method: "POST",
-                body: JSON.stringify({
-                    nom: nom,
-                    prenom: prenom,
-                    societe: societe,
-                    objet: objet,
-                    mail: mail,
-                    message: message
-                }),
-                headers: {
-                    "Content-type": "application/json"
-                }
-            })
-            const res = await response.json()
-            console.log(res)
-        }
-        
-
-                
-            
-    </script>
+    
 
 </body>
 </html>

@@ -1,82 +1,23 @@
 <?php
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $arr = array(
-        "message" => "ok"
-    );
-    echo json_encode($arr);
+$email_admin = "fetiveau.soizic1@gmail.com";
+$objet = "Contact via le site web de l'Association";
+
+$_POST["envoyer"];
+
+if(isset($_POST["envoyer"]) && !empty($_POST["envoyer"])){
+    if(isset($_POST["nom"]) && !empty($_POST["nom"]) && isset($_POST["email"]) && !empty($_POST["email"]) && isset($_POST["message"]) && !empty($_POST["message"])){
+            
+        $message = $_POST["message"];
+        $headers = 'From: '. $_POST["email"] . "\r\n" .
+            'MIME-Version: 1.0' . "\r\n" .
+            'Content-type: text/html; charset=utf-8';
+
+        if(mail($email_admin, $objet, $message, $headers)){
+            return header("location:formulaire.php?success");
+        } 
+    } 
 }
-
-//Déclaration des proprétés
-class Mail {
-    private $nom;
-    private $prenom;
-    private $societe;
-    private $objet;
-    private $email;
-    private $message;
-    private $destinataire;
-
-    //Affectation du contenu du formulaire
-    public function __construct($nom, $prenom, $societe, $objet, $email, $message, $destinataire='fetiveau.soizic1@gmail.com') {
-        $this->nom = $nom;
-        $this->prenom = $prenom;
-        $this->societe = $societe;
-        $this->objet = $objet;
-        $this->email = $email;
-        $this->message = $message;
-        $this->destinataire = $destinataire;
-    }
-
-    public function envoiMail() {
-        $expediteur = 'noreply@association.fr';
-        $sujet = 'Nouveau message';
-
-        $header = "Content-type: text/html; charset=UTF-8\r\n";
-        $header .= "FROM: $expediteur\r\n";
-
-        $message = '
-            <!DOCTYPE html>
-            <html lang="fr">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Nouveau message</title>
-            <style>
-                main{
-                    width: 95%;
-                    margin: auto;
-                    font-family: sans-serif;
-                }
-                header{
-                    background-color: black;
-                    color: white;
-                    text-align: center;
-                    padding: 12px;
-                }
-            </style>
-            </head>
-            <body>
-                <main>
-                    <header>
-                        <h1>association</h1>
-                        <h2>Nouveau message</h2>
-                    </header>
-                    <article>
-                        <p>Un nouveau message en provenance de votre site est arrivé</p>
-                        <p><strong>- Nom : </strong>'.$this->nom.'</p>
-                        <p><strong>- Prénom : </strong>'.$this->prenom.'</p>
-                        <p><strong>- Société : </strong>'.$this->societe.'</p>
-                        <p><strong>- Objet : </strong>'.$this->objet.'</p>
-                        <p><strong>- Email: </strong>'.$this->email.'</p>
-                        <p><strong>- Message: </strong><br>'.nl2br($this->message).'</p>
-                    </article>
-                </main>
-            </body>
-            </html>
-        ';
-        return mail($this->destinataire, $sujet, $message, $header);
-    }
-}
+header("location:formulaire.php?success");
 
 ?>
 

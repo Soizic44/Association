@@ -40,7 +40,7 @@ async function ajaxSend(e) {
         
         console.log(formData);
 
-        let response = await fetch('mail/send.php', {
+        let response = await fetch("http://127.0.0.1:8000/association.local/mail/mail.php", {
             method: "POST",
             body: formData
         });
