@@ -14,7 +14,7 @@ const inputObjet    = document.getElementById("objet");
 const inputMail     = document.getElementById("email");
 const inputMessage  = document.getElementById("message");
 const btnValidation = document.getElementById("envoiContact");
-const erreur        = document.getElementById("formOutput");
+const msg           = document.getElementById("formOutput");
 const loader        = document.getElementById("loaderContent");
 
 //Appel des fonctions
@@ -23,49 +23,8 @@ inputPrenom.addEventListener("keyup", validateForm);
 inputMail.addEventListener("keyup", validateForm);
 inputMessage.addEventListener("keyup", validateForm);
 
+//fonction de validation de soumission du formulaire
 
-// Fonction ajaxSend
-async function ajaxSend(e) {
-    try {
-        e.preventDefault();
-
-        /*** Créer un nouvel objet FormData */
-        let formData = new FormData();
-        formData.append("nom", inputNom.value.trim());
-        formData.append("prenom", inputPrenom.value.trim());
-        formData.append("societe", inputSociete.value.trim());
-        formData.append("objet", inputObjet.value.trim());
-        formData.append("email", inputMail.value.trim());
-        formData.append("message", inputMessage.value.trim());
-        
-        console.log(formData);
-
-        let response = await fetch("http://127.0.0.1:8000/association.local/mail/mail.php", {
-            method: "POST",
-            body: formData
-        });
-
-        let datas = await response.json();
-        loader.classList.remove("active");
-
-        if(!datas.valid) {
-            erreur.textContent = datas.message;
-            erreur.classList.add("invalid");
-        } else {
-            erreur.textContent = datas.message;
-            erreur.classList.remove("invalid");
-            erreur.classList.add("valid");
-            let button = document.querySelector("#formulaire button");
-            button.style.display = "none";
-        }
-
-    } catch(error){
-        erreur.textContent = "Erreur lors de l'envoi du mail";
-        erreur.classList.add("invalid");
-        //Quand la réponse est transmise => arrêt du loader de gestion d'attente
-        loader.classList.remove("active");
-    }
-}
 
 //fonction permettant de mettre en place le loader de gestion d'attente
 document.getElementById("envoiContact").onclick = function(){
@@ -80,7 +39,6 @@ function afficheLoader(){
     } 
 }
 
-
 //Function permettant de valider tout le formulaire
 function validateForm(){
     const nomOk = validateRequired(inputNom);
@@ -90,7 +48,7 @@ function validateForm(){
 
     if(nomOk && prenomOk && mailOk && messageOk){
         btnValidation.disabled = false;
-        erreur.textContent = "";
+        msg.textContent = "";
     }
     else{
         btnValidation.disabled = true;
@@ -106,8 +64,8 @@ function validateRequired(input){
     else{
         input.classList.remove("valid");
         input.classList.add("invalid");
-        erreur.textContent = "Merci de remplir les champs manquants";
-        erreur.classList.add("invalid");
+        msg.textContent = "Merci de remplir les champs manquants";
+        msg.classList.add("invalid");
         return false;
     }
 }
@@ -125,7 +83,7 @@ function validateMail(input){
     else{
         input.classList.remove("valid");
         input.classList.add("invalid");
-        erreur.textContent = "Votre adresse email est incorrecte";
+        msg.textContent = "Votre adresse email est incorrecte";
         return false;
     }
 }

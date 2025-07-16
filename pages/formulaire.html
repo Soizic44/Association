@@ -83,17 +83,19 @@
             </div>
 
             <!--START : Formulaire-->
-            <form action="/mail/mail.php" method="post" class="containForm destop" id="formulaire">
+            <form action="../mail/mail.php" method="post" class="containForm destop" id="formulaire">
                 <fieldset>
                     <legend><h3>Vos informations</h3></legend>
                     <div class="formNom">
                         <label for="nom">Nom :</label>
                         <input type="text" name="nom" id="nom" autocomplete="on" placeholder="Dubois" required>
+                        <div class="error" name="msg"></div>
                     </div>
 
                     <div class="formNom">
                         <label for="prenom">Prénom :</label>
                         <input type="text" name="prenom" id="prenom" autocomplete="on" placeholder="Martin" required>
+                        <div class="error" name="msg"></div>
                     </div> 
 
                     <div class="formNom">
@@ -112,6 +114,7 @@
                     <div class="formNom" id="prof">
                         <label for="societe">Société :</label>
                         <input type="text" id="societe" name="societe" placeholder="Nom de la société" required>
+                        <div class="error" name="msg"></div>
                     </div>
                 </fieldset>
 
@@ -134,11 +137,13 @@
                     <div class="choice">
                         <label for="email">Email :</label>
                         <input type="email" id="email" name="email" autocomplete="on" placeholder="email@mail.com" required>
+                        <div class="error" name="msg"></div>
                     </div>
                     <textarea name="message" id="message" cols="50" rows="10" placeholder="Merci de nous indiquer tout ce que vous jugez utile pour votre demande. exemple : si bénévole (Disponibilités...), si FA : Conditions d'Accueil..." required></textarea>
+                    <div class="error" name="msg"></div>
                 </fieldset>
                 <button type="submit" id="envoiContact" name="envoyer">Envoyer</button>
-                <div id="formOutput"></div>
+                <div id="formOutput" name="msg"></div>
             </form>
             <!--END : Formulaire-->
         </section>
@@ -149,13 +154,8 @@
             <div class="loader">
                 <div class="load1"></div>
                 <div class="load2"></div>
-                <div class="load3"></div>
-                <?php
-                    echo "<p>test</p>";
-                    $test = 0;
-                ?>
-            </div>
-            
+                <div class="load3"></div>          
+            </div>       
         </section>
         
     </main>

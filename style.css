@@ -299,6 +299,9 @@ input:invalid{
 .invalid, .error{
     color: red;
 }
+.success {
+    color: green;
+}
 .choice div {
     font-size: 0.8em;
     margin-bottom: 2%;
@@ -328,6 +331,11 @@ input[type="radio"] {
 #formOutput {
     color: red;
     padding-top: 20px;
+}
+.error {
+    color: red;
+    margin-top: 5px;
+    font-size: 12px;
 }
 
 /*Stylisation page "Evènements"*/
