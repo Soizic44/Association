@@ -265,9 +265,11 @@ html{
     color: #fff;
     text-align: center;
     line-height: 1.3;
-    position: absolute;
+}
+.footRepForm {
     bottom: 0;
-    width: 100%;
+    width: 100%; 
+    position: absolute;
 }
 
 /*Formulaire*/
@@ -306,11 +308,8 @@ input:valid{
 input:invalid{
     border: red solid 1px;
 }
-.invalid, .error{
+.invalid {
     color: red;
-}
-.success {
-    color: green;
 }
 .choice div {
     font-size: 0.8em;
@@ -344,14 +343,18 @@ input[type="radio"] {
 }
 .error {
     color: red;
-    margin-top: 5px;
-    font-size: 12px;
+}
+.success {
+    color: green;
 }
 .msgMail {
     margin: 15px;
-    font: bold 15px;
+    font-size: larger;
     text-align: center;
+    padding-top: 20px;
+    font-weight: bolder;
 }
+
 
 /*Stylisation page "Evènements"*/
 .events1 {

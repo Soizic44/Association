@@ -141,19 +141,25 @@
         
         <!--START : informations-->
         <section class="informations">  
-            <h2>Coordonnées</h2>
+            <h2>Nos Coordonnées</h2>
             <br>       
-            <h3>Notre adresse</h3>
-            <br>
+            <h3 class="padd">Notre adresse</h3>
             <p>53 rue de la Vallée<br/>
             44700 ORVAULT</p>
+            <button type="button" class="lien bgColor1" onclick="togglePopup()">Horaires d'ouvertures</button>
+            <div id="overlay-popup">
+                <div class="popup">
+                    <h3 class="padd">Nos horaires d'ouvertures</h3>
+                    <p class="padd">Du lundi au vendredi : 9H00-12H00 / 14H00-17H00</p>
+                    <p class="padd">Le samedi : 9H00-17H00</p>
+                    <button type="button" onclick="togglePopup()" class="button-popup">X</button>
+                </div>   
+            </div>
             <br>
-            <h3>Notre mail</h3>
-            <a href="mail:fetiveau.soizic1@hotmail.fr" target="_blank" class="button">fetiveau.soizic1@hotmail.fr</a>
-            <br>
-            <h3>&#9743;</h3>
-            <a href="tel:0668369763" target="_blank" class="button">06.68.36.97.63</a>
-            <br>
+            <h3 class="pad">Notre mail</h3>
+            <a href="mail:fetiveau.soizic1@hotmail.fr" target="_blank" class="button padd">fetiveau.soizic1@hotmail.fr</a>
+            <h3 class="pad margeTop">&#9743;</h3>
+            <a href="tel:0668369763" target="_blank" class="button padd">06.68.36.97.63</a>
         </section>
         <!--END : informations-->
 

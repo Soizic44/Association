@@ -74,9 +74,6 @@
         <!--START : Contact-->
         <section>
             <h2 class="titre_h2">Réponse formulaire de contact envoyé par mail</h2>
-            <div class="msgMail" name="msgMail">
-                <?php $msgMail ?>
-            </div>
         </section>
         <!--END : Contact-->
 
@@ -132,24 +129,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ";
         //envoi des données saisies par mail
         if (mail($destinataire, $sujet, $message, $headers)) {
-            echo "<p class='msgMail'>Votre message a été envoyé avec succès.</p>";
+            echo "<p class='msgMail success'>Votre message a été envoyé avec succès.</p>";
         }else{
-            echo "! Erreur : votre message n'a pas pu être envoyé !";
+            echo "<p class='msgMail error'>! Erreur : votre message n'a pas pu être envoyé !</p>";
         }  
     }
 }
 ?>
-
     </main>
     <!--END : main-->
 
     <!--START : footer-->
-    <footer id="copyright">
+    <footer id="copyright" class="footRepForm">
             <p>Copyright © 2024 Le refuge de l'espoir <br>/ Tous droits réservés</p>
     </footer>
     <!--END : footer-->
-    
-
 </body>
 </html>
 
